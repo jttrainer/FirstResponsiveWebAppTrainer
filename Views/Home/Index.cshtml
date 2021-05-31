@@ -1,0 +1,40 @@
+﻿@model AgeModel 
+@{
+    ViewBag.Title = "Age Calculator";
+}
+<h1>Age Calculator</h1>
+<div>
+    <h5>Welcome!</h5>
+    <p>This application will tell you how hold someone will be by the end of this year. Please enter the name of the person and the year they were born.</p>
+    <p>The current year is @ViewBag.year</p>
+</div>
+
+<form asp-action="Index" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="row">
+        <label asp-for="Name" class="col-md-3">Name:</label>
+        <input asp-for="Name" class="col-md-4" />
+    </div>
+    <div class="row">
+        <label asp-for="BirthDay" class="col-md-3">Date of Birth:</label>
+        <input asp-for="BirthDay" class="col-md-2" />
+    </div>
+    <div class="row">
+        <label asp-for="BirthMonth" class="col-md-3">Birth Month:</label>
+        <input asp-for="BirthMonth" class="col-md-2" />
+    </div>
+    <div class="row">
+        <label asp-for="BirthYear" class="col-md-3">Year of Birth:</label>
+        <input asp-for="BirthYear" class="col-md-2" />
+    </div>
+
+    @if (Model != null)
+    {
+        <div>
+            <h4>@ViewBag.Name is @ViewBag.AgeToday years old as of today.</h4>
+            <h4>This year @ViewBag.Name will be @ViewBag.AgeThisYear years old.</h4>
+        </div>
+    }
+    <button class="rounded-pill" type="submit">Calculate</button>
+    <a asp-action="Index">Clear</a>
+</form>
